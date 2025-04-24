@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F & I SPORTS</title>
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body, html {
+        height: 100%;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+
+    /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 15px 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .logo span {
+        font-size: 24px;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .menu-btn {
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .menu a {
+        padding: 10px 20px;
+        text-decoration: none;
+        color: black;
+        display: block;
+    }
+
+    .menu a:hover {
+        background: #f0f0f0;
+    }
+
+    .menu.open {
+        display: flex;
+    }
+
+    /* Contenedor principal */
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        text-align: left;
+        margin: 80px auto 20px;
+    }
+
+    .image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .info h1 {
+        font-size: 36px;
+        color: #333;
+    }
+
+    .info p {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .button-container {
+        margin-top: 20px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+        .boton {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #ffffff; /* o el color que tú quieras */
+}
+
+.boton-blanco {
+  color: white;
+}
+
+.boton-negro {
+  color: black;
+}
+
+    /* Ajustes responsivos */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .info h1 {
+            font-size: 30px;
+        }
+
+        .info p {
+            font-size: 14px;
+        }
+
+        .image img {
+            max-width: 100%;
+        }
+
+        video {
+            margin-top: 80px; /* Espacio para que no tape el menú */
+        }
+
+        .header {
+            padding: 10px 20px; /* Reducir el padding en móvil para dar más espacio */
+        }
+    }
+
+    /* Video responsive */
+    video {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Estilos adicionales */
+    .footer {
+        margin-top: auto;
+        text-align: center;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        font-size: 14px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .container {
+        padding-top: 70px; /* Ajusta según el tamaño de tu header */
+    }
+
+    /* Estilo del contenedor de la estadística */
+    .stats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .stat {
+        font-size: 22px;
+        font-weight: bold;
+        color: #3366CC;
+    }
+
+    .description {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Sección Banner */
+    .bmw-banner {
+        position: relative;
+        width: 100%;
+        height: 60vh; /* Ocupa el 60% de la pantalla */
+        min-height: 400px; /* Evita que sea muy pequeño en pantallas chicas */
+    }
+
+    .bmw-banner .container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 50px;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(to right, black 40%, rgba(0, 0, 0, 0.3)), url('IMAGES/FUT.BERnabeu.jpeg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+    }
+
+    .bmw-banner .text {
+        max-width: 500px;
+    }
+
+    .bmw-banner h1 {
+        font-size: 3rem;
+    }
+
+    .bmw-banner p {
+        font-size: 1.2rem;
+        margin: 10px 0;
+    }
+
+    .bmw-banner .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        color: white;
+        background: transparent;
+        border: 2px solid white;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .bmw-banner .btn:hover {
+        background: white;
+        color: black;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+        .bmw-banner .container {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bmw-banner h1 {
+            font-size: 2.2rem;
+        }
+
+        .bmw-banner p {
+            font-size: 1rem;
+        }
+    }
+    
+    /* Estilo del footer */
+    .footer {
+        background-color: #000000;
+        color: white;
+        padding: 30px 0;
+        text-align: center;
+    }
+
+    .social-section {
+        margin-bottom: 15px;
+    }
+
+    .social-section h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+
+    .social-icons a {
+        display: inline-block;
+    }
+
+    .social-icons img {
+        width: 40px;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .social-icons img:hover {
+        transform: scale(1.1);
+    }
+
+    .footer p {
+        font-size: 14px;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+        .social-icons img {
+            width: 35px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .social-icons img {
+            width: 30px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">
+        <img src="IMAGES/FUT.F&ILOGO2.png" alt="Logo">
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <nav class="menu" id="menu">
+        <a href="Index.html">Inicio</a>
+        <a href="#">Tacos y Multitacos</a>
+        <a href="ColecciónAlebrijes.html">Colección Alebrijes</a>
+        <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <script>
+    function toggleMenu() {
+        document.getElementById('menu').classList.toggle('open');
+    }
+  </script>
+
+  <video autoplay muted loop>
+    <source src="IMAGES/FUT.JERSEYALEBRIJES.mp4" type="video/mp4">
+    Tu navegador no soporta el formato de video.
+  </video>
+
+ <!-- Apartado: From Chilangos Para Chicanos -->
+<div class="chilango-section">
+    <section class="text-center py-12 px-4 bg-white">
+      <p class="text-sm text-gray-500 font-medium mb-2">
+        Colección Club Alebrijes x SVEDDA
+      </p>
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-black mb-4">
+        TALLADOS POR LA MISMA PASIÓN
+      </h2>
+      <p class="text-sm text-gray-600 mb-6">#ALEBRIJES DE OAXACA</p>
+      <a href="ColecciónAlebrijes.html"
+         class="inline-block bg-black text-white text-sm font-semibold py-2 px-5 rounded-full hover:bg-gray-800 transition">
+        Comprar
+      </a>
+    </section>
+  </div>
+  <style>
+    .chilango-section {
+      font-family: Arial, sans-serif;
+      padding: 3rem 1rem;
+      text-align: center;
+      background-color: #ffffff;
+    }
+  
+    .chilango-section p:first-of-type {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+  
+    .chilango-section h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+  
+    .chilango-section p:nth-of-type(2) {
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+  
+    .chilango-section a {
+      display: inline-block;
+      background-color: #000000;
+      color: #ffffff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+  
+    .chilango-section a:hover {
+      background-color: #1f2937;
+    }
+  </style>
+    
+
+<!-- Carrusel de Jerseys -->
+<section class="jersey-carousel-section">
+    <h2 class="carousel-title">OFERTAS RELÁMPAGO</h2>
+  
+    <div class="carousel-wrapper">
+      <div class="carousel" id="jerseyCarousel">
+        <!-- Tarjetas -->
+        <div class="card">
+          <img src="IMAGES/FUT.CHALECOSTATSPORT.png" alt="Negro">
+          <div class="info">
+            <h4>Chaleco STATSports</h4>
+            <p>Color Negro</p>
+            <div class="price">$1,000</div>
+            <button class="boton boton-negro">Ver detalles</button>
+          </div>
+        </div>
+
+    <div class="card">
+          <img src="IMAGES/FUT.LYCRA.jpg" alt="Espinillerasnegras">
+          <div class="info">
+            <h4>Lycra Deportiva PRO COMBAT</h4>
+            <p>Color Negro</p>
+            <div class="price">$200</div>
+            <button class="boton boton-negro">Ver detalles</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="IMAGES/FUT.CHALECOSTATSPORTBLANCO.png" alt="Blanco">
+          <div class="info">
+            <h4>Chaleco STATSports</h4>
+            <p>Color Blanco</p>
+            <div class="price">$1,000</div>
+            <button class="boton boton-negro">Ver detalles</button>
+          </div>
+        </div>
+  
+        <div class="card">
+          <img src="IMAGES/FUT.ESPINILLERASSTATSPORT.png" alt="Espinileras">
+          <div class="info">
+            <h4>Performance Shinguards 2.0</h4>
+            <p>Espinilleras Color Blanco</p>
+            <div class="price">$1,000</div>
+            <button class="boton boton-negro">Ver detalles</button>
+          </div>
+        </div>
+  
+        <div class="card">
+          <img src="IMAGES/FUT.ESPINILLERASSTATSPORTNEGRO.png" alt="Espinillerasnegras">
+          <div class="info">
+            <h4>Performance Shinguards 2.0 (Black Edition)</h4>
+            <p>Espinilleras color Negro</p>
+            <div class="price">$1,000</div>
+            <button class="boton boton-negro">Ver detalles</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="IMAGES/FUT.CALCETINES.jpg" alt="Liverpool">
+          <div class="info">
+            <h4>Calcetines Antideslizantes TAPEDESIGN / 6 pares</h4>
+            <p>Color Blanco y/o Negro</p>
+            <div class="price">$300</div>
+            <button class="boton boton-negro">Ver detalles</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Flechas -->
+      <button class="btn btn-left" onclick="scrollJerseyCarousel(-1)">◀</button>
+      <button class="btn btn-right" onclick="scrollJerseyCarousel(1)">▶</button>
+  
+      <!-- Scrollbar personalizada -->
+      <div class="custom-scrollbar" id="customScrollbar">
+        <div class="custom-thumb" id="customThumb"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Estilos -->
+  <style>
+    .jersey-carousel-section {
+      margin: 2rem 0;
+    }
+  
+    .carousel-title {
+      font-size: 1.8rem;
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+    }
+  
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      padding: 0 2rem;
+    }
+  
+    .carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
+  
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .card {
+      flex: 0 0 auto;
+      width: 250px;
+      background: #fff;
+      border-radius: 10px;
+      scroll-snap-align: start;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+  
+    .info {
+      padding: 1rem;
+    }
+  
+    .info h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+  
+    .info p {
+      color: #555;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+  
+    .info .price {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #000;
+    }
+  
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid white;
+      color: white;
+      font-size: 2.5rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: all;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+  
+    .btn-left {
+      left: 10px;
+    }
+  
+    .btn-right {
+      right: 10px;
+    }
+  
+    .btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  
+    .custom-scrollbar {
+      height: 6px;
+      background: #ddd;
+      border-radius: 3px;
+      margin: 1rem 2rem 0 2rem;
+      position: relative;
+      cursor: pointer;
+    }
+  
+    .custom-thumb {
+      height: 100%;
+      background: #555;
+      border-radius: 3px;
+      width: 40px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  
+    @media (max-width: 768px) {
+      .card {
+        width: 200px;
+      }
+  
+      .carousel-title {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .card {
+        width: 160px;
+      }
+  
+      .btn {
+        width: 45px;
+        height: 45px;
+        font-size: 2rem;
+      }
+    }
+  </style>
+  
+  <!-- Script -->
+  <script>
+    const carousel = document.getElementById("jerseyCarousel");
+    const thumb = document.getElementById("customThumb");
+    const scrollbar = document.getElementById("customScrollbar");
+  
+    function scrollJerseyCarousel(direction) {
+      const scrollAmount = 300;
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+    }
+  
+    carousel.addEventListener("scroll", () => {
+      const ratio = carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth);
+      const maxThumbLeft = scrollbar.clientWidth - thumb.clientWidth;
+      thumb.style.left = `${ratio * maxThumbLeft}px`;
+    });
+  
+    scrollbar.addEventListener("click", (e) => {
+      const rect = scrollbar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const ratio = clickX / scrollbar.clientWidth;
+      carousel.scrollLeft = ratio * (carousel.scrollWidth - carousel.clientWidth);
+    });
+  </script>
+
+  <div class="container">
+    <div class="info">
+        <h1>¿Quiénes somos?</h1>
+        <p>Somos una empresa 100% Mexicana que busca llevar la mejor cálidad de productos deportivos al alcanze de todo el público en general y de la mejor cálidad.</p>
+        <div class="button-container">
+            <a href="pagina_de_quienes_somos.html" class="button">Más sobre nosotros</a>
+        </div>
+    </div>
+    <div class="image">
+        <img src="IMAGES/FUT.F&ILOGO.png" alt="Imagen representativa">
+    </div>
+  </div>
+
+  <div class="bmw-banner">
+    <div class="container">
+        <div class="text">
+            <h1>Visita nuestro catálogo !!!</h1>
+            <p>Tacos y multitacos AL MEJOR PRECIO !!!</p>  <br>
+            <button class="boton boton-negro">Ver detalles</button>
+        </div>
+    </div>
+  </div>
+
+<br>
+
+
+  <style>
+    /* === Carrusel Modular: aislado con prefijo "carousel-fut" === */
+    .carousel-fut-container {
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
+      background-color: #000; /* Cambia aquí si necesitas otro fondo */
+    }
+
+    .carousel-fut-track {
+      display: flex;
+      align-items: center;
+      animation: carousel-fut-scroll 25s linear infinite;
+      white-space: nowrap;
+    }
+
+    .carousel-fut-track img {
+      width: clamp(100px, 20vw, 200px);
+      height: auto;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .carousel-fut-track img:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes carousel-fut-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 600px) {
+      .carousel-fut-track img {
+        margin: 0 6px;
+      }
+    }
+  </style>
+
+<body>
+
+  <!-- Carrusel de Marcas (modularizado) -->
+  <section class="carousel-fut-container">
+    <div class="carousel-fut-track">
+      <img src="IMAGES/FUT.LOGONIKE.png" alt="Nike">
+      <img src="IMAGES/FOT.LOGOADIDAS.png" alt="Adidas">
+      <img src="IMAGES/FUT.LOGOPUMA.png" alt="Puma">
+      <img src="IMAGES/FUT.LOGOUMBRO.png" alt="Umbro">
+      <!-- Duplicado para scroll continuo -->
+      <img src="IMAGES/FUT.LOGONIKE.png" alt="Nike">
+      <img src="IMAGES/FOT.LOGOADIDAS.png" alt="Adidas">
+      <img src="IMAGES/FUT.LOGOPUMA.png" alt="Puma">
+      <img src="IMAGES/FUT.LOGOUMBRO.png" alt="Umbro">
+    </div>
+  </section>
+
+  <div class="container">
+    <p class="title">
+      VARIEDAD EN TALLAS , MARCAS Y PRECIOS !!! </p>
+    <div class="image-container">
+        <img src="IMAGES/FUT.TACOSTACOS.png" alt="">
+    </div>
+  </div>
+
+  <style>
+    .container1 {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 900px;
+        width: 100%;
+        margin: auto;
+        font-family: Arial, sans-serif;
+        color: #fff;
+    }
+    .image-section {
+        flex: 1;
+        min-width: 300px;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image-section img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .text-section {
+        flex: 1;
+        background-color: #000;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+    }
+    .text-section h1 {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.4;
+    }
+    .text-section p {
+        font-size: 16px;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+    .learn-more {
+        font-size: 24px;
+        text-decoration: none;
+        color: #fff;
+        margin-top: 20px;
+        display: inline-block;
+    }
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            text-align: center;
+        }
+        .text-section {
+            padding: 20px;
+        }
+        .image-section {
+            padding: 20px;
+        }
+    }
+</style>
+</head>
+<!-- Sección: Productos Más Vendidos -->
+<section id="productos-vendidos" style="margin: 80px auto; max-width: 1000px;">
+  <div class="courrusel2-container">
+    <button class="courrusel2-button courrusel2-prev">&#10094;</button>
+    <div class="courrusel2-track" id="courrusel2Track">
+      <div class="courrusel2-item">
+        <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/c048ccbe-7b57-4ad4-bf1e-4575e63e8f3f/fc-barcelona-2024-25-stadium-local-jersey-de-f%C3%BAtbol-dri-fit-para-hombre-dZm6RJ.png" alt="Producto 1">
+        <h3>Producto 1</h3>
+        <p>Descripción del producto más vendido 1.</p>
+        <button class="boton boton-negro">Ver detalles</button>
+      </div>
+      <div class="courrusel2-item">
+        <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/c048ccbe-7b57-4ad4-bf1e-4575e63e8f3f/fc-barcelona-2024-25-stadium-local-jersey-de-f%C3%BAtbol-dri-fit-para-hombre-dZm6RJ.png" alt="Producto 2">
+        <h3>Producto 2</h3>
+        <p>Descripción del producto más vendido 2.</p>
+        <button class="boton boton-negro">Ver detalles</button>
+      </div>
+      <div class="courrusel2-item">
+        <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/c048ccbe-7b57-4ad4-bf1e-4575e63e8f3f/fc-barcelona-2024-25-stadium-local-jersey-de-f%C3%BAtbol-dri-fit-para-hombre-dZm6RJ.png" alt="Producto 3">
+        <h3>Producto 3</h3>
+        <p>Descripción del producto más vendido 3.</p>
+        <button class="boton boton-negro">Ver detalles</button>
+      </div>
+    </div>
+    <button class="courrusel2-button courrusel2-next">&#10095;</button>
+  </div>
+</section>
+
+<!-- CSS en tu archivo principal o en <style> -->
+<style>
+  .courrusel2-container {
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .courrusel2-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .courrusel2-item {
+    min-width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .courrusel2-item img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .courrusel2-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 1;
+  }
+
+  .courrusel2-prev {
+    left: 10px;
+  }
+
+  .courrusel2-next {
+    right: 10px;
+  }
+</style>
+
+<!-- JS (puede ir al final del body o en archivo separado) -->
+<script>
+  const courrusel2Track = document.getElementById('courrusel2Track');
+  const courrusel2Prev = document.querySelector('.courrusel2-prev');
+  const courrusel2Next = document.querySelector('.courrusel2-next');
+  let courrusel2Index = 0;
+
+  function updateCourrusel2() {
+    const width = courrusel2Track.clientWidth;
+    courrusel2Track.style.transform = 'translateX(' + (-courrusel2Index * width) + 'px)';
+  }
+
+  courrusel2Prev.addEventListener('click', () => {
+    courrusel2Index = (courrusel2Index > 0) ? courrusel2Index - 1 : 2;
+    updateCourrusel2();
+  });
+
+  courrusel2Next.addEventListener('click', () => {
+    courrusel2Index = (courrusel2Index < 2) ? courrusel2Index + 1 : 0;
+    updateCourrusel2();
+  });
+
+  setInterval(() => {
+    courrusel2Next.click();
+  }, 5000);
+</script>
+
+<body>
+
+<section class="container1">
+    <div class="image-section">
+        <img src="IMAGES/FUT.WORLDCUP.jpg" alt="Imagen decorativa">
+    </div>
+    <div class="text-section">
+        <h1>Como comprar </h1>
+        <p>
+            Pregunta con alguno de nuestros colaboradores verificados o manda mensaje al WhatsApp con el código de el producto y paga en efectivo con colaboradores o en tranferencia en oxxo si es de modalidad WhatsApp <br>
+             ALGUNOS PRODUCTOS TIENEN CARGO EXTRA POR ENVÍO
+        </p>
+        <a href="#" class="learn-more">→</a>
+    </div>
+</section>
+<br>
+</body>
+
+  <footer class="footer">
+    <div class="social-section">
+        <h2>Síguenos en nuestras redes sociales</h2>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/" target="_blank">
+                <img src="IMAGES/IG3.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank">
+                <img src="IMAGES/FB8.png" alt="Facebook">
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <img src="IMAGES/TT2.png" alt="Twitter">
+            </a>
+            <a href="https://youtube.com" target="_blank">
+                <img src="IMAGES/YT4.png" alt="YouTube">
+            </a>
+        </div>
+    </div>
+    <p>&copy; 2025 FMMG_Frank .&copy; 2025 F & I Sports. Todos los derechos reservados.</p>
+    <br>
+    <img src="IMAGES/Logo1.png" width="90">
+  </footer>
+
+</body>
+</html>
+

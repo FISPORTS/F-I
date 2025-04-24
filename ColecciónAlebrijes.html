@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colección Alebrijes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255); /* <- Color de fondo blanco */
+    overflow-x: hidden;
+        }
+
+        .open-btn {
+            font-size: 20px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #5757576b;
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .side-menu {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: rgba(87, 87, 87, 0.418);
+            overflow-y: auto;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 9;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .side-menu ul li {
+            padding: 15px;
+        }
+
+        .side-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            font-size: 36px;
+            color: white;
+            background: none;
+            border: none;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            cursor: pointer;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            text-decoration: none;
+            color: black;
+        }
+
+        .product img {
+            width: 100%; /* Ajusta al ancho del contenedor */
+            max-height: 150px; /* Altura máxima permitida */
+            object-fit: contain; /* Mantiene las proporciones sin recortar */
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+        }
+
+        .product p {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .catalog {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .side-menu {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .catalog {
+                grid-template-columns: 1fr;
+            }
+
+            .side-menu {
+                width: 180px;
+            }
+        }
+        .boton {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #ffffff; /* o el color que tú quieras */
+}
+
+.boton-blanco {
+  color: white;
+}
+
+.boton-negro {
+  color: black;
+}
+
+    </style>
+</head>
+<body>
+    <button class="open-btn" onclick="openMenu()">☰ Abrir Menú</button>
+    <div id="side-menu" class="side-menu">
+        <button class="close-btn" onclick="closeMenu()">×</button>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Catálogo.html">Tacos y Multitacos</a></li>
+            <li><a href="ColecciónAlebrijes.html">Colección Alebrijes</a></li>
+            <li><a href="Contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <video autoplay muted loop>
+            <source src="IMAGES/FUT.JERSEYALEBRIJES.mp4" type="video/mp4">
+            Tu navegador no soporta el formato de video.
+          </video>
+        <style> /* Video responsive */
+            video {
+                width: 100%;
+                height: auto;
+            }
+        
+            /* Estilos adicionales */
+            .footer {
+                margin-top: auto;
+                text-align: center;
+                padding: 10px;
+                background-color: #333;
+                color: white;
+                font-size: 14px;
+                position: relative;
+                bottom: 0;
+                width: 100%;
+            }
+        
+            .container {
+                padding-top: 70px; /* Ajusta según el tamaño de tu header */
+            }</style>
+           
+        </div>
+    </header>
+
+    <section class="catalog">
+        <a href="BugattiVP.html" class="product">
+            <img src="IMAGES/FUT.JERSEYALEBRIJESBLANCA.png" alt="Producto 1">
+            <h3>JERSEY ALEBRIJES BLANCA</h3>
+            <p>$890.00</p>
+            <button class="boton boton-negro">Ver detalles</button>
+        </a>
+        <a href="IplayVP.html" class="product">
+            <img src="IMAGES/FUT.JERSEYALEBRIJESNARANJA.png" alt="Producto 2">
+            <h3>JERSEY ALEBRIJES NARANJA</h3>
+            <p>$890.00</p>
+            <button class="boton boton-negro">Ver detalles</button>
+        </a>
+        <a href="HighlightVP.html" class="product">
+            <img src="IMAGES/FUT.JERSEYALEBRIJESNEGRA.png" alt="Producto 3">
+            <h3>JERSEY ALEBRIJES NEGRO</h3>
+            <p>$890.00</p>
+            <button class="boton boton-negro">Ver detalles</button>
+        </a>
+        <a href="..." class="product">
+            <img src="IMAGES/FUT.JESEYALEBRIJESNEGRO25.png" alt="Producto 4">
+            <h3>Jersey Alebrijes Negro</h3>
+            <p>$890.00</p>
+            <button class="boton boton-negro">Ver detalles</button>
+        </a>
+    <a href="..." class="product">
+        <img src="IMAGES/FUT.JERSEYALEBRIJESBLANCA25.png" alt="Producto 4">
+        <h3>Jersey Alebrijes Blanca</h3>
+        <p>$890.00</p>
+        <button class="boton boton-negro">Ver detalles</button>
+    </a>
+    </section>
+
+    <script>
+        function openMenu() {
+            document.getElementById("side-menu").classList.add("open");
+            document.body.classList.add("menu-open");
+        }
+
+        function closeMenu() {
+            document.getElementById("side-menu").classList.remove("open");
+            document.body.classList.remove("menu-open");
+        }
+    </script>
+</body>
+</html>
